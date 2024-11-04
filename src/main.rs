@@ -108,6 +108,14 @@ fn main() {
         process::exit(1); // code 1 is error, code 0 is success
     });
 
+    if config.query == "help" {
+        println!("USAGE:");
+        println!("minigrep [arg1] [arg2]");
+        println!("[arg1]: the query to be searched");
+        println!("[arg2]: the file with path, to be searched in");
+        process::exit(0); // code 1 is error, code 0 is success
+    }
+
     // let config = parse_config(args);
     
     

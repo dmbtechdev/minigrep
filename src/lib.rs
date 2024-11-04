@@ -18,16 +18,20 @@ impl Config {
         // println!("{:#?}", args);
         // with iterator version
         args.next();
-
+        let mut file_path = "".to_owned();
         let query = match args.next() {
-            Some(arg) => arg,
+            Some(arg1) => {
+                if arg1 != "help" {
+                    file_path = match args.next() {
+                        Some(arg2) => arg2,
+                        None => return Err("Didn't get a file path"),
+                    };
+                }
+                arg1
+            },
             None => return Err("Didn't get a query string"),
         };
-
-        let file_path = match args.next() {
-            Some(arg) => arg,
-            None => return Err("Didn't get a file path"),
-        };
+        
 
         
         // without iterator version
